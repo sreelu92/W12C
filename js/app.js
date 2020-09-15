@@ -15,13 +15,14 @@ function login() {
             let tokenObject=JSON.parse(this.responseText);
             Cookies.set("value",dataObject.email);
             Cookies.set("token",tokenObject.token);
+          
             window.open("home.html");
             
         } else if (this.readyState != 4) {
             document.getElementById("login-status").innerHTML = "Loading";
         }
         else {
-            document.getElementById("form").innerHTML = "Invalid login";
+            document.getElementById("login-status").innerHTML = "Invalid login ";
         }
     };
 

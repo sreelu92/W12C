@@ -1,25 +1,27 @@
 function deleting() {
-    //Cookies.remove("token");
-    //window.open("index.html","_self");
+    Cookies.remove("token");
+    Cookies.remove("value");
+    window.open("index.html", "_self");
     console.log("helo");
 }
 
 
-let deleteToken=document.getElementById("loggingout");
-deleteToken.addEventListener('click',deleting);
+let deleteToken = document.getElementById("loggingout");
+deleteToken.addEventListener('click', deleting);
 
 
 let newValue = Cookies.get("value");
-let newToken=Cookies.get("token");
+let newToken = Cookies.get("token");
 
 if (newValue == undefined) {
     document.getElementById("h2tag").innerHTML = "You have to log in";
-    //  let newElement=document.createElement('button');
-    //  document.body.appendChild(newElement).addEventListener("click",goBack);
-    //  function goBack() {
-    //     window.open("index.html","_self");
-    //  }
-    
+    let newElement = document.createElement('button');
+    newElement.innerText="Go back";
+    document.body.appendChild(newElement).addEventListener("click", goBack);
+    function goBack() {
+        window.open("index.html", "_self");
+    }
+
 
 }
 else {
@@ -39,12 +41,17 @@ function readColor() {
             let allColor = JSON.parse(this.responseText);
             console.log(allColor);
             for (let i = 0; i < allColor.data.length; i++) {
-                document.getElementById("body").innerHTML += "<h3>" + "name:" + allColor.data[i].name + "</h3>";
-                document.getElementById("body").innerHTML += "<h4>" + "year:" + allColor.data[i].year + "</h4>";
-                let newVariable=document.createElement('div');
-                newVariable.style.width+="50px";
-                newVariable.style.height+="50px";
-                newVariable.style.backgroundColor+=allColor.data[i].color;
+                let newTag=document.createElement('h3');
+                newTag.innerText=allColor.data[i].name;
+                document.body.appendChild(newTag);
+                let newTag2=document.createElement('h4');
+                newTag2.innerText=allColor.data[i].year;
+                document.body.appendChild(newTag2);
+
+                let newVariable = document.createElement('div');
+                newVariable.style.width += "50px";
+                newVariable.style.height += "50px";
+                newVariable.style.backgroundColor += allColor.data[i].color;
 
                 document.body.appendChild(newVariable);
 
