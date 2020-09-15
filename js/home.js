@@ -1,13 +1,4 @@
-function deleting() {
-    Cookies.remove("token");
-    Cookies.remove("value");
-    window.open("index.html", "_self");
-    console.log("helo");
-}
 
-
-let deleteToken = document.getElementById("loggingout");
-deleteToken.addEventListener('click', deleting);
 
 
 let newValue = Cookies.get("value");
@@ -33,6 +24,14 @@ else {
 
 
 function readColor() {
+    function deleting() {
+        Cookies.remove("token");
+        Cookies.remove("value");
+        window.open("index.html", "_self");
+    }
+    let deleteToken = document.createElement('button');
+    deleteToken.innerText="Log out";
+    document.body.appendChild(deleteToken).addEventListener("click", deleting);
 
 
     let ajax = new XMLHttpRequest();
